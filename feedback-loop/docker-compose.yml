@@ -1,0 +1,56 @@
+version: '3'
+services:
+  # feedback:
+  #   build:
+  #       context: .
+  #       dockerfile: Dockerfile.feedback
+  #   ports:
+  #     - "3000:3000"
+  #   links:
+  #     - "redis"
+  #     - "dynamodb"
+  #     - "aws-sam"
+  #     # - "pmta"
+  #     # - "ingestor"
+
+  aws-sam:
+    image: cnadiminti/aws-sam-local
+    command: local start-api --docker-volume-basedir "$PWD/example" --host 0.0.0.0
+    ports:
+      - '3000:3000'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./example:/var/opt
+      
+  # redis:
+  #   image: redis
+  #   ports:
+  #     - "6379:6379"
+
+  # dynamodb:
+  #   image: dwmkerr/dynamodb
+  #   command: "-sharedDb"
+  #   ports:
+  #     - "8000:8000"
+
+  # ingestor:
+  #   image: aib/ingestor # Update to actual one
+  #   ports:
+  #     - "3000:3000"
+  #   links:
+  #     - "redis"
+  #     - "dynamodb"
+  #     # - "pmta"
+  #     # - "feedback"
+  #   environment:
+  #     - AWS_ACCESS_KEY_ID=$AIB_AWS_ACCESS_KEY_ID
+  #     - AWS_SECRET_ACCESS_KEY=$AIB_AWS_SECRET_ACCESS_KEY
+  #     - AWS_REGION=us-east-1
+  #     - NODE_ENV=development
+  #     - DOCKER_APP=true
+
+  # pmta:
+  #   build:
+  #     dockerfile: Dockerfile.pmta
+
+

@@ -14,3 +14,13 @@ Resources:
           Properties:
             Path: /
             Method: any
+        RedisPost:
+          Type: Api
+          Properties:
+            Path: /products
+            Method: Post
+        RedisGet:
+          Type: Api
+          Properties:
+            Path: /products
+            Method: Get

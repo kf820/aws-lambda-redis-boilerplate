@@ -15,17 +15,31 @@ services:
 
   aws-sam:
     image: cnadiminti/aws-sam-local
-    command: local start-api --docker-volume-basedir "$PWD/example" --host 0.0.0.0
+    command: local start-api --docker-volume-basedir "$PWD" --host 0.0.0.0
     ports:
       - '3000:3000'
+      - '6479:6379'
+    links:
+      - "redis"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./example:/var/opt
+      - .:/var/opt
+    environment:
+      - REDIS_URL=redis
+      - REDIS_PORT=6379
+    networks:
+      - redis
       
-  # redis:
-  #   image: redis
-  #   ports:
-  #     - "6379:6379"
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - redis
+
+networks:
+  redis:
+    driver: bridge
 
   # dynamodb:
   #   image: dwmkerr/dynamodb

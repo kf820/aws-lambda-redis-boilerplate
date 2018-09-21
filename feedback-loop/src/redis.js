@@ -8,6 +8,6 @@ module.exports = () => {
     // }
   
     // return jsonify(redis.createClient(redisOptions))
-    // return jsonify(redis.createClient(6379,'192.168.99.100'))
-    return jsonify(redis.createClient(6379))
+    return jsonify(redis.createClient(6379,'172.28.0.3'))
+    // return jsonify(redis.createClient(6379))
   }

@@ -15,9 +15,16 @@ Install [Docker](https://www.docker.com/) on your system.
 
 Install [Docker Compose](https://docs.docker.com/compose/install/) on your system.
 
+Install `npm` and `npm` on your system
+ 
+
 ## Usage
 
 ### Development
+
+Install required npm packages:
+* `cd feedback-loop/src/`
+* `npm install`
 
 To start AWS SAM, DynamoDB and Redis:
 

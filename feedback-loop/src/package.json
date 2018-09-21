@@ -1,0 +1,15 @@
+{
+  "name": "aws-sam",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.all-inbox.com:ded-ip/feedback-loop.git"
+  },
+  "author": "Javier Garcia",
+  "dependencies": {
+    "redis": "^2.8.0",
+    "redis-jsonify": "^1.2.0"
+  }
+}

@@ -8,6 +8,7 @@ Resources:
     Properties:
       Runtime: nodejs6.10
       Handler: src/index.handler
+      Timeout: 10
       Events:
         HelloWorld:
           Type: Api
